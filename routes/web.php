@@ -38,7 +38,6 @@ Route::controller(CartController::class)->group(function(){
 });
 
 Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
-Route::post('/send-notification',[HomeController::class,'notification'])->name('notification');
 
 Route::controller(FrontController::class)->group(function(){
     Route::get('/','index');
@@ -87,6 +86,7 @@ Route::middleware(['auth','isadmin'])->group(function(){
     
     Route::get('/downloadPDF/{id}',[HomeController::class,'downloadPDF']);
     Route::get('/send-email/{id}',[HomeController::class,'sendmail']);
+    Route::post('/send-notification',[HomeController::class,'notification'])->name('notification');
 
     Route::controller(HomeController::class)->group(function(){
         Route::get('settings','settings');
@@ -100,6 +100,7 @@ Route::middleware(['auth','isadmin'])->group(function(){
         Route::post('update-order/{id}','editOrder');
         Route::get('order-history','history');
         Route::get('profits','profits');
+        Route::get('notification','notification');
     });
 
     Route::controller(CouponController::class)->group(function(){

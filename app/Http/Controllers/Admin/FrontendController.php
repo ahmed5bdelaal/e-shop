@@ -76,4 +76,8 @@ class FrontendController extends Controller
         $orders = Order::where('status','1')->get();
         return view('admin.order.history',compact('orders'));
     }
+
+    public function notification(){
+        return view('admin.notification');
+    }
 }

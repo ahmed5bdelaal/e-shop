@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <h5 class="card-header">Settings</h5>
+  <div class="container">
+    <h2 class="h2">Settings</h2><hr>
     <div class="card-body">
     <form method="post" action="{{url('settings-update')}}" enctype="multipart/form-data">
         @csrf 
@@ -128,6 +129,7 @@
         </div>
       </form>
     </div>
+  </div>
 </div>
 
 @endsection

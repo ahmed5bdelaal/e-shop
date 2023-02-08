@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Helpers\Helper;
 use Mail;
 use Kutia\Larafirebase\Facades\Larafirebase;
 use App\Mail\OrderMail;
@@ -39,7 +40,6 @@ class HomeController extends Controller
     }
 
     public function settingsUpdate(Request $request){
-        // return $request->all();
         $this->validate($request,[
             'name'=>'required|string',
             'short_des'=>'required|string',
@@ -55,9 +55,17 @@ class HomeController extends Controller
             'instagram'=>'required|string',
         ]);
         $data=$request->all();
-        // return $data;
+        if($request->hasFile('logo')){
+            $path='assets/images/logo';
+            $filename=Helper::uplodePhoto($request->logo,$path);
+            $data['logo'] = $filename;
+        }
+        if($request->hasFile('photo')){
+            $path='assets/images/logo';
+            $filename=Helper::uplodePhoto($request->photo,$path);
+            $data['photo'] = $filename;
+        }
         $settings=Setting::first();
-        // return $settings;
         $status=$settings->update($data);
         if($status){
             return redirect()->back()->with('status','Setting successfully updated');
@@ -117,7 +125,7 @@ class HomeController extends Controller
                 ->withBody($request->message)
                 ->sendMessage($fcmTokens);
     
-            return redirect()->back()->with('success','Notification Sent Successfully!!');
+            return redirect()->back()->with('status','Notification Sent Successfully!!');
     
         }catch(\Exception $e){
             report($e);

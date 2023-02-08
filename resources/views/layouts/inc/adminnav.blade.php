@@ -28,17 +28,21 @@
                         <a class="dropdown-item" href="#">Another notification</a>
                     </ul>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nc-icon nc-zoom-split"></i>
                         <span class="d-lg-block">&nbsp;Search</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <a class="nav-link dropdown-toggle" href="profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(Auth::user()->photo)
+                            <img src="{{ asset('assets/images/users/'.Auth::user()->photo) }}" alt="{{ Auth::user()->name }}" width="32" height="32" class="rounded-circle">
+                        @else
+                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                        @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="profile">profile</a>

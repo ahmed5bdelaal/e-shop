@@ -15,21 +15,16 @@
                 @enderror
             </div>
     
-            {{-- <div class="form-group col-md-6 mb-3">
+            <div class="form-group col-md-6 mb-3">
               <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
               <div class="input-group">
-                  <span class="input-group-btn">
-                      <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                      <i class="fa fa-picture-o"></i> Choose
-                      </a>
-                  </span>
-              <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$data->photo}}">
-            </div> --}}
-            {{-- <div id="holder" style="margin-top:15px;max-height:100px;"></div>
+              <input id="thumbnail" class="form-control" type="file" name="photo">
+            </div>
+            <div id="holder" style="margin-top:15px;max-height:100px;"></div>
               @error('photo')
               <span class="text-danger">{{$message}}</span>
               @enderror
-            </div> --}}
+            </div>
 
             <div class="form-group col-md-6 mb-3">
               <label for="email" class="col-form-label">Email <span class="text-danger">*</span></label>
@@ -70,33 +65,6 @@
               <label for="New Password" class="col-form-label">New Password <span class="text-danger">*</span></label>
               <input type="Password" class="form-control" name="n_password" required >
               @error('n_password')
-              <span class="text-danger">{{$message}}</span>
-              @enderror
-            </div>
-          </div>
-
-          <div class="form-group col-md-6 mb-3">
-              <button class="btn btn-success" type="submit">Update</button>
-          </div>
-        </form>
-        <hr>
-         <form method="post" action="{{ route('notification') }}" >
-            @csrf 
-            
-            <div class="row">
-              <div class="form-group col-md-6 mb-3">
-                <label for="title" class="col-form-label">title <span class="text-danger">*</span></label>
-                <input class="form-control" min="8" type="text" required name="title">
-                @error('title')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6 mb-3">
-              <label for="message" class="col-form-label">message <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="message" required >
-              @error('message')
               <span class="text-danger">{{$message}}</span>
               @enderror
             </div>

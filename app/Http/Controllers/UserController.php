@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Helpers\Helper;
 use Hash;
 
 class UserController extends Controller
@@ -22,9 +23,12 @@ class UserController extends Controller
         'phone'=>'required|string',
     ]);
     $data=$request->all();
-    // return $data;
+    if($request->hasFile('photo')){
+        $path='assets/images/users';
+        $filename=Helper::uplodePhoto($request->photo,$path);
+        $data['photo'] = $filename;
+    }
     $user=User::where('id',auth()->id())->first();
-    // return $settings;
     $status=$user->update($data);
     if($status){
         return redirect()->back()->with('status','Profile successfully updated');

@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('isadmin');
+    }
+
     public function index(){
         
         $products=Product::count();

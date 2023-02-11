@@ -38,9 +38,10 @@ Route::controller(CartController::class)->group(function(){
 });
 
 Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
+Route::post('settings-first', [HomeController::class, 'settingsUpdate']);
 
 Route::controller(FrontController::class)->group(function(){
-    Route::get('/','index');
+    Route::get('/','setting');
     Route::get('about','about');
     Route::get('contact','contact');
     Route::get('get-product/{id}','product');

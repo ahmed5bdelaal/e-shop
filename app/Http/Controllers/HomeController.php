@@ -9,10 +9,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Helper;
 use Mail;
+use Illuminate\Support\Facades\File; 
 use Kutia\Larafirebase\Facades\Larafirebase;
 use App\Mail\OrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\SettingsRequest;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,10 +23,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     /**
      * Show the application dashboard.
@@ -42,25 +41,39 @@ class HomeController extends Controller
     }
 
     public function settingsUpdate(SettingsRequest $request){
-        
-        $data=$request->validated();
-        if($request->hasFile('logo')){
-            $path='assets/images/logo';
-            $filename=Helper::uplodePhoto($request->logo,$path);
-            $data['logo'] = $filename;
-        }
-        if($request->hasFile('photo')){
-            $path='assets/images/logo';
-            $filename=Helper::uplodePhoto($request->photo,$path);
-            $data['photo'] = $filename;
-        }
-        $settings=Setting::first();
-        $status=$settings->update($data);
-        if($status){
-            return redirect()->back()->with('status','Setting successfully updated');
-        }
-        else{
-            return redirect()->back()->with('error','Please try again');
+        $set=setting::first();
+        if(!$set || Auth::user()->role_as === 1){
+            $data=$request->validated();
+            if($request->hasFile('logo')){
+                $pathDelete = 'assets/images/logo/'.$set->logo;
+                if(File::exists($pathDelete)){
+                    File::delete($pathDelete);
+                }
+                $path='assets/images/logo';
+                $filename=Helper::uplodePhoto($request->logo,$path);
+                $data['logo'] = $filename;
+            }
+            if($request->hasFile('photo')){
+                $pathDelete = 'assets/images/logo/'.$set->photo;
+                if(File::exists($pathDelete)){
+                    File::delete($pathDelete);
+                }
+                $path='assets/images/logo';
+                $filename=Helper::uplodePhoto($request->photo,$path);
+                $data['photo'] = $filename;
+            }
+            if(!$set){
+                $status=Setting::create($data);
+            }else{
+                $settings=Setting::first();
+                $status=$settings->update($data);
+            }
+            if($status){
+                return redirect()->back()->with('status','Setting successfully updated');
+            }
+            else{
+                return redirect()->back()->with('error','Please try again');
+            }
         }
     }
     

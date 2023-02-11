@@ -9,11 +9,22 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
+    public function setting()
+    {
+        $settings=setting::first();
+            if($settings){
+                return $this->index();
+            }else{
+                return view('admin.setup');
+            };
+    }
+
     public function index()
     {
         $categorys = Category::all();

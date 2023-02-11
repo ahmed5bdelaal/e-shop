@@ -9,6 +9,18 @@ class setting extends Model
 {
     use HasFactory;
 
-    protected $fillable=['short_des','description','photo','address','phone','email','logo'];
+    protected $fillable=[
+        'name',
+        'short_des',
+        'description',
+        'photo',
+        'address',
+        'phone',
+        'email',
+        'logo',
+        'facebock',
+        'google',
+        'twitter',
+        'instagram'];
 
 }

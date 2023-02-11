@@ -28,3 +28,9 @@
         </nav>
     </div>
 </footer>
+<script>
+var getNewNotifications = function () {
+    $('.notice').load(location.href + ' .notice > *');
+};
+setInterval(getNewNotifications, 10000);
+</script>

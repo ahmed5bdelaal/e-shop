@@ -240,13 +240,8 @@ suffered alteration in some form.</p>
     <li><span>{{$item->rating->count()}} Review(s)</span></li>
     </ul>
     <div class="price">
-        @php
-        if($item->dis){
-            $dis=$item->s_price*$item->offer/100;
-        }
-        echo '<span>$'.$dis.'</span>';
-    @endphp
-    <span class="discount-price">${{$item->s_price}}</span>
+        <span>${{ $item->s_price }}</span>
+        <span class="price">%{{$item->offer}}</span>
     </div>
     </div>
     </div>

@@ -13,14 +13,20 @@ class StripeController extends Controller
     }
 
     public function handlePost(Request $request)
-    { 
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
-                "amount" => $request->input('total')*100,
-                "currency" => "egp",
-                "source" => $request->stripeToken,
-                "description" => "Making test payment." 
-        ]);
-        return redirect('/')->with('status','Payment has been successfully processed.');
+    {   
+        try{
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET','sk_test_51Lwa1mLotAv2HWJvJXSD54uE3HhZk8sTYXYwtbJFktWsiMSfQRm5urUl0IkgNpmyDtB48zxgjqEVT6aHbXZBDipY00dysWaiJ2'));
+            Stripe\Charge::create ([
+                    "amount" => $request->input('total')*100,
+                    "currency" => "egp",
+                    "source" => $request->stripeToken,
+                    "description" => "Making test payment." 
+            ]);
+            return redirect('/')->with('status','Payment has been successfully processed.');
+        }catch(\Exception $e){
+            return response()->json([
+                'status'=>'some error try again',
+            ],500);
+        }        
     }
 }

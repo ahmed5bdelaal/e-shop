@@ -1,17 +1,3 @@
-/*
-Template Name: ShopGrids - Bootstrap 5 eCommerce HTML Template.
-Author: GrayGrids
-*/
-
-     //========= glightbox
-     
-    //========= Hero Slider 
-    
-    //======== Brand Slider
-    
-
-
-    
 
 $(document).ready(function () {
     loadcart();
@@ -67,7 +53,7 @@ $(function() {
   
     if (!$form.data('cc-on-file')) {
       e.preventDefault();
-      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+      Stripe.setPublishableKey('pk_test_51Lwa1mLotAv2HWJvLmv7zUC5pwirJYZ1Z9jvrhueQpS8KQykzWf334Ua0bCA50h3Xze4ijbIdgEaglz0FqTcRG0R00cgN8aRYd');
       Stripe.createToken({
         number: $('.card-num').val(),
         cvc: $('.card-cvc').val(),
@@ -120,9 +106,12 @@ $(function() {
                     'total': total,
                 },
                 success: function (response) {
+                    $form.get(0).submit();
+                },
+                error: function(response){
+                    alert(response.status);
                 }
             });
-              $form.get(0).submit();
         }
     }
   

@@ -34,13 +34,6 @@ class BrandController extends Controller
             $filename=Helper::uplodePhoto($request->photo,$path);
             $data['photo'] = $filename;
         }
-        $slug=Str::slug($request->title);
-        $count=Brand::where('slug',$slug)->count();
-        if($count>0){
-            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
-        }
-        $data['slug']=$slug;
-        // return $data;
         $status=Brand::create($data);
         if($status){
            return redirect('/brands')->with('status','Brand successfully created');

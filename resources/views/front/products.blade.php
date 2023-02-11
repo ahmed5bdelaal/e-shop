@@ -189,15 +189,7 @@ $5,000
     <li><span>{{$item->rating->count()}} Review(s)</span></li>
     </ul>
     <div class="price">
-        @php
-        if($item->dis){
-            $dis=$item->s_price*$item->offer/100;
-            echo '<span>$'.$dis.'</span>';
-            echo '<span class="discount-price">$'.$item->s_price.'</span>';
-        }else{
-            echo '<span>$'.$item->s_price.'</span>';
-        }
-    @endphp
+    <span>${{ $item->s_price }}</span>
     </div>
     </div>
     </div>

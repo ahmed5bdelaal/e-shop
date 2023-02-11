@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\setting;
+use App\Models\Notice;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
     {   
          $settings=setting::first();
         $categorys=Category::all();
+        $notices=Notice::all();
+        View::share('notices', $notices);
         View::share('categorys', $categorys);
        View::share('settings', $settings);
         Schema::defaultStringLength(191);

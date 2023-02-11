@@ -40,10 +40,15 @@ html {
 body {
   font-family: "Manrope", sans-serif;
   font-weight: 500;
+  font-display: swap;
   font-style: normal;
   color: #888;
   overflow-x: hidden;
   font-size: 14px;
+}
+
+.hide{
+  display: none;
 }
 
 .w {

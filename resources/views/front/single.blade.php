@@ -54,15 +54,7 @@ if(is_countable($product->image) && count($product->image) > 1) {
 <h2 class="title">{{$product->name}}</h2>
 <p class="category"><i class="lni lni-tag"></i><a href="/get-category/{{$product->category->id}}">{{$product->category->name}}</a></p>
 <div class="price">
-    @php
-    if($product->dis){
-        $dis=$product->s_price*$product->offer/100;
-        echo '<h3 class="price">$'.$dis.'</h3>';
-        echo '<span>$'.$product->s_price.'</span>';
-    }else{
-        echo '<h3 class="price">$'.$product->s_price.'</h3>';
-    }
-@endphp
+    <h3 class="price">{{ $product->s_price }}</h3>
 </div>
 <p class="info-text">{{$product->disc}}.</p>
 <div class="row">

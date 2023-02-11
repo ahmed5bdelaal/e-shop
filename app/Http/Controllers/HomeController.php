@@ -12,6 +12,8 @@ use Mail;
 use Kutia\Larafirebase\Facades\Larafirebase;
 use App\Mail\OrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Requests\SettingsRequest;
+
 class HomeController extends Controller
 {
     /**
@@ -39,22 +41,9 @@ class HomeController extends Controller
         return view('admin.settings')->with('data',$data);
     }
 
-    public function settingsUpdate(Request $request){
-        $this->validate($request,[
-            'name'=>'required|string',
-            'short_des'=>'required|string',
-            'description'=>'required|string',
-            'photo'=>'required',
-            'logo'=>'required',
-            'address'=>'required|string',
-            'email'=>'required|email',
-            'phone'=>'required|string',
-            'facebock'=>'required|string',
-            'twitter'=>'required|string',
-            'google'=>'required|string',
-            'instagram'=>'required|string',
-        ]);
-        $data=$request->all();
+    public function settingsUpdate(SettingsRequest $request){
+        
+        $data=$request->validated();
         if($request->hasFile('logo')){
             $path='assets/images/logo';
             $filename=Helper::uplodePhoto($request->logo,$path);
@@ -74,6 +63,7 @@ class HomeController extends Controller
             return redirect()->back()->with('error','Please try again');
         }
     }
+    
     public function downloadPDF($id)
     {
         $order = Order::find($id);
@@ -112,15 +102,6 @@ class HomeController extends Controller
     
         try{
             $fcmTokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
-    
-            //Notification::send(null,new SendPushNotification($request->title,$request->message,$fcmTokens));
-    
-            /* or */
-    
-            //auth()->user()->notify(new SendPushNotification($title,$message,$fcmTokens));
-    
-            /* or */
-    
             Larafirebase::withTitle($request->title)
                 ->withBody($request->message)
                 ->sendMessage($fcmTokens);

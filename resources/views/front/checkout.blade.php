@@ -117,7 +117,7 @@ Checkout - E-Shop
         </div>
     @endif
 <form role="form" action="{{route('stripe.payment')}}" method="POST" class="validation" data-cc-on-file="false"
-data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+data-stripe-publishable-key="{{ env('STRIPE_KEY','pk_test_51Lwa1mLotAv2HWJvLmv7zUC5pwirJYZ1Z9jvrhueQpS8KQykzWf334Ua0bCA50h3Xze4ijbIdgEaglz0FqTcRG0R00cgN8aRYd') }}"
 id="payment-form">
         @csrf
     <div class="single-form form-default">

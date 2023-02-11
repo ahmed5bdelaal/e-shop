@@ -87,6 +87,7 @@ Route::middleware(['auth','isadmin'])->group(function(){
     Route::get('/downloadPDF/{id}',[HomeController::class,'downloadPDF']);
     Route::get('/send-email/{id}',[HomeController::class,'sendmail']);
     Route::post('/send-notification',[HomeController::class,'notification'])->name('notification');
+    Route::get('notice',[FrontendController::class,'notice']);
 
     Route::controller(HomeController::class)->group(function(){
         Route::get('settings','settings');

@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-Contact Us - E-Shop
+Contact Us
 @endsection
 @section('content')
 <div class="breadcrumbs">

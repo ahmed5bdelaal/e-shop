@@ -58,7 +58,7 @@
   <li>
     <div class="user">
     <i class="lni lni-user"></i>
-    <a href="">
+    <a href="profile">
       {{ Auth::user()->name }}
     </a>
     </div>

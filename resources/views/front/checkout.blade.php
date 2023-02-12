@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-Checkout - E-Shop
+Checkout
 @endsection
 @section('content')
 <div class="breadcrumbs">

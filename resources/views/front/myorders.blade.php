@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-  My Orders - E-Shop
+  My Orders
 @endsection
 @section('content')
     <div class="container py-5">

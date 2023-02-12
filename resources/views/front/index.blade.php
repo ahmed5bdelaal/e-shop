@@ -1,7 +1,4 @@
 @extends('layouts.front')
-@section('title')
-E-Shop
-@endsection
 @section('content')
 <section class="hero-area">
 <div class="container">

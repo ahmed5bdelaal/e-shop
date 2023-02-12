@@ -73,7 +73,19 @@ class FrontendController extends Controller
     public function editOrder(Request $request ,$id){
         $order = Order::where('id',$id)->first();
         $order->status = $request->order_status;
-        $order->update();
+        $status=$order->update();
+        if($status){
+            return $this->productQty($order);
+        }  
+    }
+
+    public function productQty($order)
+    {
+        foreach($order->orderItems as $item){
+            $product=Product::where('id',$item->prod_id)->first();
+            $product->qty=$product->qty - $item->qty;
+        }
+
         return redirect()->back()->with('status','order change successfully');
     }
 

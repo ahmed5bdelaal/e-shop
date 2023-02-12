@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $settings->name }}</title>
+    <title>Dashboard - {{$settings->name}}</title>
 
    {{-- style --}}
    <link rel="shortcut icon" href="{{asset('assets/images/logo/ama.png')}}" type="image/x-icon">

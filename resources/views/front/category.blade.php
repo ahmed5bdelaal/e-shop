@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-Products - E-Shop
+Products
 @endsection
 @section('content')
 <div class="breadcrumbs">

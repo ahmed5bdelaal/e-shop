@@ -11,7 +11,11 @@ class UserController extends Controller
 {
     public function index()
     {
-       return view('admin.profile');
+        if(Auth::user()->role_as == 1){
+            return view('user.profileAdmin');
+        }else{
+            return view('user.profileUser');
+        }
     }
 
     

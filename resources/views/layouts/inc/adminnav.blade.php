@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu">
                             @foreach($notices as $notice)
-                                <a class="dropdown-item" href="admin/view-order/{{ $notice->data }}">{{ $notice->type }}</a>
+                                <a class="dropdown-item" href="{{ $notice->data }}">{{ $notice->type }}</a>
                             @endforeach
                     </ul>
                 </li>

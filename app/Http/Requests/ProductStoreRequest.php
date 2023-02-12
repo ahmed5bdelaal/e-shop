@@ -31,7 +31,6 @@ class ProductStoreRequest extends FormRequest
             'disc'=>'required|string',
             'o_price'=>'required|string',
             's_price'=>'required|string',
-            'image'=>'required',
             'qty'=>'required|string',
             'tax'=>'required|string',
             'meta_title'=>'required|string',

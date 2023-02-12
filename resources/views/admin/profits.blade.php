@@ -83,15 +83,41 @@
               
         </div>
         <hr>
-        <h3>Sales for year</h3><hr>
+        <h3>Sales</h3><hr>
         <div class="row">
             <canvas id="salesYearChart"></canvas>
-      </div>
+        </div>
         <hr>
-        <h3>Profits for year</h3><hr>
+        <h3>Profits</h3><hr>
         <div class="row">
             <canvas id="profitYearChart"></canvas>
-      </div>
+        </div>
+        <hr>
+        <h3>Sales for year</h3><hr>
+        <div class="">
+          <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Sales</th>
+                    <th>Num Orders</th>
+                    <th>Profits</th>
+                </tr>
+            </thead>
+            <tbody>
+              @if($reports)
+                @foreach ($reports as $report)
+                <tr>
+                    <td>{{$report->month}}</td>
+                    <td>{{$report->total}}</td>
+                    <td>{{$report->count}}</td>
+                    <td>{{$report->profit}}</td>
+                </tr>
+                @endforeach
+              @endif
+            </tbody>
+        </table>
+        </div>
     </div>
     </div>
 @endsection

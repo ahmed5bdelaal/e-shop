@@ -40,7 +40,7 @@ class CheckoutController extends Controller
                 $s +=$item->product->o_price * $item->prod_qty;
             }
             $order->total = $request->total;
-            $order->profit=$request->total - $s - 10;
+            $order->profit=($request->total - $s) - 10;
             $order->tracking_no = 'shop' . rand('1111','9999');
             $order->save();
             return $this->orderItem($order,$request);
@@ -61,9 +61,6 @@ class CheckoutController extends Controller
                     'qty'     => $item->prod_qty,
                     'price'   => $item->product->s_price,
                 ]);
-                $prod = Product::where('id',$item->prod_id)->first();
-                $prod->qty = $prod->qty - $item->prod_qty;
-                $prod->update();
             }
             return $this->userInfo($order,$request);
         }catch(\Exception $e){
@@ -97,7 +94,7 @@ class CheckoutController extends Controller
     {
         Notice::create([
             'type' => 'new order',
-            'data' => $order->id,
+            'data' => '/admin/view-order/'.$order->id,
         ]);
         return $this->deleteCart();
     }

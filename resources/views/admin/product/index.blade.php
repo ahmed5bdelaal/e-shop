@@ -70,17 +70,7 @@
             order:[
               [0,"desc"]
             ],
-            buttons:[
-              {
-                extend:'collection',
-                text:'Export',
-                buttons:[
-                  'copy',
-                  'excel',
-                  'pdf'
-                ]
-              },
-            ],
+            
             ajax:"{{Route('products.all')}}",
             columns: [{
               data:'id',

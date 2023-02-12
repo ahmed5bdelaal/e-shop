@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('cate_id');
             $table->foreignId('brand_id');
             $table->string('name');
-            $table->string('offer');
+            $table->string('offer')->nullable();
             $table->mediumText('s_disc');
             $table->longText('disc');
             $table->string('o_price');

@@ -64,23 +64,25 @@ class ProductController extends Controller
             }
             $data['image']=$image;
         }
-        $data['offer']=$request->input('offer');
+        if($request->input('dis') == true){
+            $data['offer']=$request->input('offer');
+        }
         $data['status']=$request->input('status') == true ? '1':'0';
         $data['dis']=$request->input('dis') == true ? '1':'0';
         $data['trending']=$request->input('trending') == true ? '1':'0';
         $status=Product::create($data);
         if($status){
-            return redirect('add-product')->with('status','Product successfully created');
-         }
-         else{
-            return redirect('add-product')->with('error','Error, Please try again');
+            return redirect('products')->with('status','Product successfully created');
+         }else{
+            return redirect('products')->with('error','Error, Please try again');
          }
     }
 
     public function edit($id)
     {   
-        $product = product::findOrFail($id);
-        return view('admin.product.edit',compact('product'));
+        $product = product::with('brand','category')->findOrFail($id);
+        $brands=Brand::all();
+        return view('admin.product.edit',compact('product','brands'));
     }
 
     public function update(ProductStoreRequest $request , $id)
@@ -92,17 +94,18 @@ class ProductController extends Controller
             $image = $filename;
             $data['image']=$image;
         }
-        $data['offer']=$request->input('offer');
+        if($request->input('dis') == true){
+            $data['offer']=$request->input('offer');
+        }
         $data['status']=$request->input('status') == true ? '1':'0';
         $data['dis']=$request->input('dis') == true ? '1':'0';
         $data['trending']=$request->input('trending') == true ? '1':'0';
         $status=$product->update($data);
-
         if($status){
-           return redirect('add-product')->with('status','Product successfully updated');
+           return redirect('products')->with('status','Product successfully updated');
         }
         else{
-           return redirect('add-product')->with('error','Error, Please try again');
+           return redirect('products')->with('error','Error, Please try again');
         }
     }
 

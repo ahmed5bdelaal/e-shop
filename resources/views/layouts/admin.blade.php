@@ -104,18 +104,7 @@
             timer: 2000
             })
         </script>                
-    @endif
-    @if (session('status'))
-        <script>                
-            Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: '{{ session('status') }}',
-            showConfirmButton: false,
-            timer: 2000
-            })
-        </script>
-    @endif              
+    @endif         
     @yield('scripts')
 </body>
 </html>

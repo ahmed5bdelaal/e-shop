@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Notice;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -55,14 +56,16 @@ class FrontendController extends Controller
         $s_month=Order::where('status','1')->whereMonth('created_at', Carbon::now()->month)->sum('total');
         $s_day=Order::where('status','1')->whereDay('created_at', Carbon::now()->day)->sum('total');
         $s_year_chart = Order::selectRaw('MONTH(created_at) as month, SUM(total) as total')->where('status','1')
+        ->groupBy('month')
+        ->get();
+        $reports = Order::selectRaw('MONTH(created_at) as month,COUNT(total) as count ,SUM(profit) as profit ,SUM(total) as total')->where('status','1')
         ->whereYear('created_at', Carbon::now()->year)
         ->groupBy('month')
         ->get();
         $p_year_chart = Order::selectRaw('MONTH(created_at) as month, SUM(profit) as profit')->where('status','1')
-        ->whereYear('created_at', Carbon::now()->year)
         ->groupBy('month')
         ->get();
-        return view('admin.profits',compact('profits','p_year','p_month','p_day','sales','s_year','s_month','s_day','p_year_chart','s_year_chart'));
+        return view('admin.profits',compact('profits','reports','p_year','p_month','p_day','sales','s_year','s_month','s_day','p_year_chart','s_year_chart'));
     }
 
     public function viewOrder($id){
@@ -84,8 +87,16 @@ class FrontendController extends Controller
         foreach($order->orderItems as $item){
             $product=Product::where('id',$item->prod_id)->first();
             $product->qty=$product->qty - $item->qty;
+            $status=$product->update();
+            if($status){
+                if($product->qty = 5){
+                    Notice::create([
+                        'type' => 'product almost Out Of Stock',
+                        'data' => '/edit-product/'.$product->id,
+                    ]);
+                }
+            }
         }
-
         return redirect()->back()->with('status','order change successfully');
     }
 

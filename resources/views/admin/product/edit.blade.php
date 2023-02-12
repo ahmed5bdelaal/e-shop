@@ -5,7 +5,7 @@
             <h4>Edit Product</h4>
         </div>
         <div class="card-body">
-           <form action="{{url('update-product/'.$product->id)}}" method="post" enctype="multipart/form-data">
+           <form action="{{url('/update-product/'.$product->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -17,17 +17,29 @@
                     <div class="form-floating">
                         <label for="floatingSelect">Category</label>
                         <select class="form-control" name="cate_id">
-                          <option selected>{{$product->category->name}}</option>
+                          <option value="{{$product->category->id}}" selected>{{$product->category->name}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">description</label>
-                    <textarea name="disc" value="" rows="3" class="form-control">{{$product->disc}}</textarea>
+                    <div class="form-floating">
+                        <label for="floatingSelect">Brand</label>
+                        <select class="form-control @error('brand_id') is-invalid @enderror" name="brand_id">
+                          <option value="{{$product->brand->id}}" selected>{{$product->brand->title}}</option>
+                          @foreach ($brands as $item)
+                              <option value="{{$item->id}}">{{$item->title}}</option>
+                          @endforeach
+                        </select>
+                        @error('brand_id')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">small description</label>
-                    <textarea name="s_disc" value="" rows="3" class="form-control">{{$product->s_disc}}</textarea>
+                    <label for="">quantity</label>
+                    <input type="number" value="{{$product->qty}}" name="qty" class="form-control">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="">status</label>
@@ -42,6 +54,14 @@
                     <input type="checkbox" {{$product->trending=='1' ? 'checked':''}} name="trending">
                 </div>
                 <div class="col-md-6 mb-3">
+                    <label for="">description</label>
+                    <textarea name="disc" value="" rows="3" class="form-control">{{$product->disc}}</textarea>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">small description</label>
+                    <textarea name="s_disc" value="" rows="3" class="form-control">{{$product->s_disc}}</textarea>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="">orginal price</label>
                     <input type="number" value="{{$product->o_price}}" name="o_price" class="form-control">
                 </div>
@@ -52,10 +72,6 @@
                 <div id="of" class="col-md-6 mb-3 ofer">
                     <label for="">offer(%)</label>
                     <input type="number" value="{{$product->offer}}" name="offer" class="form-control">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">quantity</label>
-                    <input type="number" value="{{$product->qty}}" name="qty" class="form-control">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">tax</label>

@@ -61,4 +61,29 @@ class UserController extends Controller
 
         return redirect()->back()->with('status','Password successfully updated');
     }
+
+    public function users()
+    {
+        $users= User::all();
+        return view('admin.users',compact('users'));
+    }
+
+    public function makeAdmin($id)
+    {
+        $user=User::where('id',$id)->first();
+        $user->role_as = 1;
+        $status=$user->update();
+        if($status){
+            return redirect()->back()->with('status',$user->name.' is admin');
+        }
+    }
+
+    public function removeUser($id)
+    {
+        $user=User::where('id',$id)->first();
+        $status=$user->delete();
+        if($status){
+            return redirect()->back()->with('status',$user->name.' is deleted');
+        }
+    }
 }

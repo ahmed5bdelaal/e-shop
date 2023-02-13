@@ -61,6 +61,12 @@ Tip 2: you can also add an image using data-image tag
                     <p>Notification</p>
                 </a>
             </li>
+            <li class="nav-item {{Request::is('users') ? 'active' : '';}}">
+                <a class="nav-link" href="{{url('users')}}">
+                    <i class="nc-icon nc-circle-09"></i>
+                    <p>Users</p>
+                </a>
+            </li>
             <li class="nav-item {{Request::is('Settings') ? 'active' : '';}}">
                 <a class="nav-link" href="{{url('settings')}}">
                     <i class="nc-icon nc-circle-09"></i>

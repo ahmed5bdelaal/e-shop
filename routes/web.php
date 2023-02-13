@@ -103,6 +103,12 @@ Route::middleware(['auth','isadmin'])->group(function(){
         Route::post('/send-notification','notification');
     });
 
+    Route::controller(UserController::class)->group(function(){
+        Route::get('users','users');
+        Route::post('make-admin/{id}','makeAdmin');
+        Route::post('remove-user/{id}','removeUser');
+    });
+
     Route::controller(FrontendController::class)->group(function(){
         Route::get('dashboard','index'); 
         Route::get('d-orders','orders'); 

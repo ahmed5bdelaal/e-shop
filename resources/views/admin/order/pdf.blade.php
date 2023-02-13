@@ -131,7 +131,7 @@
                 </tr>
             <tr>
                 <td>Order Status:</td>
-                <td>{{$order->status == '0' ? 'Pending':'completed'}}</td>
+                <td>{{$order->status}}</td>
 
                 <td>Pin code:</td>
                 <td>{{$order->code}}</td>
@@ -172,8 +172,12 @@
             </tr>
         </tbody>
     </table>
-
     <br>
+    <p class="text-center">
+        your <a href="/view-order/{{$order->id}}">order</a> accepted
+    </p>
+    <br>
+    <hr>
     <p class="text-center">
         Thank your for shopping with E-Shop
     </p>

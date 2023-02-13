@@ -131,16 +131,16 @@
                 </tr>
             <tr>
                 <td>Order Status:</td>
-                <td>{{$order->status == '0' ? 'Pending':'completed'}}</td>
+                <td>{{$order->status}}</td>
 
                 <td>Pin code:</td>
                 <td>{{$order->code}}</td>
             </tr>
         </tbody>
     </table>
-
-    
-
+    <p class="text-center">
+        Your <a href="/view-order/{{$order->id}}">Order</a> Canceled By Admin for {{$order->message}}
+    </p>
     <br>
     <p class="text-center">
         Thank your for shopping with E-Shop

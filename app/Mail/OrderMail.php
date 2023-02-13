@@ -28,7 +28,7 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        $subject="you create an order";
+        $subject="your order accepted";
         return $this->subject($subject)->view('admin.order.pdf');
     }
 }

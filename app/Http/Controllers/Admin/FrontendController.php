@@ -99,13 +99,6 @@ class FrontendController extends Controller
             return $this->productQty($order);
         }  
     }
-    public function sendmail($id)
-    {
-        $order = Order::find($id);
-        Mail::to($order->email->subject('your order'))->send(new OrderMail($order));
-        return redirect()->back()->with('status','order mail has been sent to'.$order->name);
-    }
-
     public function productQty($order)
     {
         foreach($order->orderItems as $item){
@@ -113,7 +106,7 @@ class FrontendController extends Controller
             $product->qty=$product->qty - $item->qty;
             $status=$product->update();
             if($status){
-                if($product->qty = 5){
+                if($product->qty == 5){
                     Notice::create([
                         'type' => 'product almost Out Of Stock',
                         'data' => '/edit-product/'.$product->id,

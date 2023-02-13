@@ -33,6 +33,7 @@ class CheckoutController extends Controller
             $order->city = $request->city;
             $order->code = $request->code;
             $order->country = $request->country;
+            $order->status ="new";
             $order->state = $request->state;
             $s=0;
             $carttotal = Cart::where('user_id',Auth::id())->get();
@@ -44,11 +45,11 @@ class CheckoutController extends Controller
             $order->tracking_no = 'shop' . rand('1111','9999');
             $order->save();
             return $this->orderItem($order,$request);
-        }catch(\Exception $e){
+           }catch(\Exception $e){
             return response()->json([
                 'status'=> 'some error try again',
             ],500);
-        }        
+        }     
     }
     public function orderItem($order,$request)
     {
@@ -103,7 +104,7 @@ class CheckoutController extends Controller
         try{
             $cartItem = Cart::where('user_id',Auth::id())->get();
             Cart::destroy($cartItem);
-            return response()->json([ 'status'=> 'yes']);
+            return redirect('/')->with('status','Payment has been successfully processed.');
         }catch(\Exception $e){
             return response()->json([
                 'status'=> 'some error try again',

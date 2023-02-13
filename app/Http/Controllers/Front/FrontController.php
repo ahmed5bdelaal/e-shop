@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Notice;
 use App\Models\Rating;
 use App\Models\setting;
 use Illuminate\Http\Request;
@@ -133,6 +134,27 @@ class FrontController extends Controller
     {
         $order = Order::where('id',$id)->where('user_id',Auth::id())->first();
         return view('front.vieworder',compact('order'));
+    }
+
+    public function cancelOrder(Request $request ,$id){
+        $order = Order::where('id',$id)->first();
+        $order->status = $request->order_status;
+        if($request->message){
+            $order->message = $request->message;
+        }
+        $status=$order->update();
+        if($status){
+            return $this->noti($order);
+        }  
+    }
+
+    public function noti($order)
+    {
+        Notice::create([
+            'type' => 'order canceled',
+            'data' => '/admin/view-order/'.$order->id,
+        ]);
+        return redirect()->back()->with('status','order canceled successfully');
     }
 
     public function about()

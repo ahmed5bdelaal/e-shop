@@ -10,6 +10,7 @@ use App\Http\Controllers\front\CartController;
 use App\Http\Controllers\front\CheckoutController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\RatingController;
+use App\Http\Controllers\Front\WishlistController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,15 +29,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('pdfsh', function () {
 //     return view('pdf');
 // });
-Route::controller(CartController::class)->group(function(){
-    Route::get('cart','viewCart');  
-    Route::post('add-to-cart','addToCart');
-    Route::post('remove-product','removeProduct');
-    Route::post('update-cart','updateCart');
-    Route::get('load-cart','loadCart'); 
-    
-});
-
 Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
 Route::post('settings-first', [HomeController::class, 'settingsUpdate']);
 
@@ -67,9 +59,27 @@ Route::middleware(['auth'])->group(function(){
         Route::post('place-order','placeOrder');
     });
 
+    Route::controller(CartController::class)->group(function(){
+        Route::get('cart','viewCart');  
+        Route::post('add-to-cart','addToCart');
+        Route::post('remove-product','removeProduct');
+        Route::post('update-cart','updateCart');
+        Route::get('load-cart','loadCart'); 
+        
+    });
+
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('wishlist','viewwishlist');  
+        Route::post('add-to-wishlist','addToWishlist');
+        Route::post('remove-product-wishlist','removeProduct');
+        Route::get('load-wishlist','loadwishlist'); 
+        
+    });
+
     Route::controller(FrontController::class)->group(function(){
         Route::get('my-orders','myOrders');
         Route::get('view-order/{id}','viewOrders');
+        Route::post('cancelOrder/{id}','cancelOrder');
     });
 
     Route::controller(UserController::class)->group(function(){
@@ -84,25 +94,27 @@ Route::get('/login/{social}',[LoginController::class,'socialLogin'])->where('soc
 Route::get('/login/{social}/callback',[LoginController::class,'handleProviderCallback'])->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 
 Route::middleware(['auth','isadmin'])->group(function(){
-    
-    Route::get('/downloadPDF/{id}',[HomeController::class,'downloadPDF']);
-    Route::get('/send-email/{id}',[HomeController::class,'sendmail']);
-    Route::post('/send-notification',[HomeController::class,'notification'])->name('notification');
-    Route::get('notice',[FrontendController::class,'notice']);
 
     Route::controller(HomeController::class)->group(function(){
         Route::get('settings','settings');
         Route::post('settings-update','settingsUpdate');
+        Route::get('/downloadPDF/{id}','downloadPDF');
+        Route::get('/send-email/{id}','sendmail');
+        Route::post('/send-notification','notification');
     });
 
     Route::controller(FrontendController::class)->group(function(){
         Route::get('dashboard','index'); 
         Route::get('d-orders','orders'); 
+        Route::get('order-canceled','ordersCanceled');
         Route::get('admin/view-order/{id}','viewOrder');
         Route::post('update-order/{id}','editOrder');
         Route::get('order-history','history');
         Route::get('profits','profits');
         Route::get('notification','notification');
+        Route::get('notice','notice');
+        Route::post('notice-read','noticeRead');
+        Route::get('notice-readAll','noticeReadAll');
     });
 
     Route::controller(CouponController::class)->group(function(){

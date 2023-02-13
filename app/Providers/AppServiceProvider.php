@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {   
          $settings=setting::first();
         $categorys=Category::all();
-        $notices=Notice::all();
+        $notices=Notice::where('read_at',null)->get();
         View::share('notices', $notices);
         View::share('categorys', $categorys);
        View::share('settings', $settings);

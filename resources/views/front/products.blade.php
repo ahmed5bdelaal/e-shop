@@ -169,6 +169,7 @@ $5,000
     <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
     <div class="button">
     <button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
+    <button class="btn addToWishlist"><i class="lni lni-heart"></i> Add to Wishlist</button>
     <input type="hidden" value="{{$item->id}}" class="prod_id" >
     <input type="hidden" value="1" class="qty" >
     <input type="hidden"  value="{{$item->qty}}" class="o-qty" >
@@ -219,8 +220,8 @@ $5,000
 <div class="product-image">
     <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#"></a>
 <div class="button">
-<button class="btn addToCart"><i class="lni lni-cart"></i> Add to
-Cart</button>
+<button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
+<button class="btn addToWishlist"><i class="lni lni-heart"></i>Add to Wish</button>
 <input type="hidden" value="{{$item->id}}" class="prod_id" >
 <input type="hidden" value="1" class="qty" >
 <input type="hidden"  value="{{$item->qty}}" class="o-qty" >

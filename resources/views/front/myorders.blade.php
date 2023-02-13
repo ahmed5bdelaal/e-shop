@@ -25,7 +25,7 @@
                                     <tr>
                                         <td>{{$item->tracking_no}}</td>
                                         <td>{{$item->total}}</td>
-                                        <td>{{$item->status == '0' ? 'pending': 'completed'}}</td>
+                                        <td>{{$item->status}}</td>
                                         <td>
                                             <a href="/view-order/{{$item->id}}" class="btn btn-primary" >view</a>
                                         </td>

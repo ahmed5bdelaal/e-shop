@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderMail extends Mailable
+class cancelOrder extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
@@ -28,7 +28,7 @@ class OrderMail extends Mailable
      */
     public function build()
     {
-        $subject="you create an order";
-        return $this->subject($subject)->view('admin.order.pdf');
+        $subject="order canceled";
+        return $this->subject($subject)->view('admin.order.mailCancel');
     }
 }

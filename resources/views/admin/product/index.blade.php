@@ -40,7 +40,6 @@
     <script type="text/javascript">
     $(document).ready(function () {
         $('.show_confirm').click(function(event){
-            alert('fghj');
             var form = $(this).closest('#form');
             var name = $(this).data('name');
             event.preventDefault();

@@ -28,6 +28,10 @@ Checkout
 <div class="row justify-content-center">
 <div class="col-lg-8">
 <div class="checkout-steps-form-style-1">
+    <form role="form" action="{{url('/place-order')}}" method="POST" class="validation" data-cc-on-file="false"
+    data-stripe-publishable-key="{{ env('STRIPE_KEY','pk_test_51Lwa1mLotAv2HWJvLmv7zUC5pwirJYZ1Z9jvrhueQpS8KQykzWf334Ua0bCA50h3Xze4ijbIdgEaglz0FqTcRG0R00cgN8aRYd') }}"
+    id="payment-form">
+        @csrf
 <ul id="accordionExample">
 <li>
 <h6 class="title" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Your Personal Details </h6>
@@ -41,7 +45,7 @@ Checkout
 <input type="text" name="fname" class="fname" value="{{Auth::user()->name}}" placeholder="First Name" required>
 </div>
 <div class="col-md-6 form-input form">
-<input type="text" class="lname" value="{{Auth::user()->lname}}" placeholder="Last Name" required>
+<input type="text" name="lname" value="{{Auth::user()->lname}}" placeholder="Last Name" required>
 </div>
 </div>
 </div>
@@ -66,7 +70,7 @@ Checkout
 <div class="single-form form-default">
 <label>Address</label>
 <div class="form-input form">
-<input type="text" class="address" value="{{Auth::user()->address}}" placeholder="Mailing Address" required>
+<input type="text" name="address" value="{{Auth::user()->address}}" placeholder="Mailing Address" required>
 </div>
 </div>
 </div>
@@ -74,7 +78,7 @@ Checkout
 <div class="single-form form-default">
 <label>City</label>
 <div class="form-input form">
-<input type="text" class="city" value="{{Auth::user()->city}}" placeholder="City" required>
+<input type="text" name="city" value="{{Auth::user()->city}}" placeholder="City" required>
 </div>
 </div>
 </div>
@@ -82,7 +86,7 @@ Checkout
 <div class="single-form form-default">
 <label>Post Code</label>
 <div class="form-input form">
-<input type="text" class="code" value="{{Auth::user()->code}}" placeholder="Post Code" required>
+<input type="text" name="code" value="{{Auth::user()->code}}" placeholder="Post Code" required>
 </div>
 </div>
 </div>
@@ -90,7 +94,7 @@ Checkout
 <div class="single-form form-default">
 <label>Country</label>
 <div class="form-input form">
-<input type="text" class="country" value="{{Auth::user()->country}}" placeholder="Country" required>
+<input type="text" name="country" value="{{Auth::user()->country}}" placeholder="Country" required>
 </div>
 </div>
 </div>
@@ -98,7 +102,7 @@ Checkout
 <div class="single-form form-default">
 <label>Region/State</label>
 <div class="form-input form">
-    <input type="text" class="state" value="{{Auth::user()->state}}" placeholder="State" required>
+    <input type="text" name="state" value="{{Auth::user()->state}}" placeholder="State" required>
     </div>
 </div>
 </div>
@@ -116,10 +120,6 @@ Checkout
             <p>{{ Session::get('success') }}</p>
         </div>
     @endif
-<form role="form" action="{{route('stripe.payment')}}" method="POST" class="validation" data-cc-on-file="false"
-data-stripe-publishable-key="{{ env('STRIPE_KEY','pk_test_51Lwa1mLotAv2HWJvLmv7zUC5pwirJYZ1Z9jvrhueQpS8KQykzWf334Ua0bCA50h3Xze4ijbIdgEaglz0FqTcRG0R00cgN8aRYd') }}"
-id="payment-form">
-        @csrf
     <div class="single-form form-default">
     <label>Cardholder Name</label>
     <div class="form-input form">

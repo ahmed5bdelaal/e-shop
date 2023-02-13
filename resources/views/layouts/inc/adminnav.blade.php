@@ -21,9 +21,17 @@
                         <span class="d-lg-none">Notification</span>
                     </a>
                     <ul class="dropdown-menu">
+                        @if ($notices)
                             @foreach($notices as $notice)
-                                <a class="dropdown-item" href="{{ $notice->data }}">{{ $notice->type }}</a>
+                            <a class="dropdown-item nn" href="#">{{ $notice->type }}</a>
+                            <input type="hidden" value="{{$notice->id}}" id="noticeId">
+                            <input type="hidden" value="{{$notice->data}}" id="noticeData">
                             @endforeach
+                            <hr>
+                            <a class="dropdown-item all" href="#">make all as read</a>
+                        @else
+                            <a class="dropdown-item" href="#">No Notification</a>
+                        @endif
                     </ul>
                 </li>
             </ul>

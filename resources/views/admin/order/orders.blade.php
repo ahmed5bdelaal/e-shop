@@ -4,6 +4,7 @@
                 <div class="card-header">
                     <h1>New Orders</h1>
                     <a href="{{url('order-history')}}">Orders History</a>
+                    <a style="float: right" href="{{url('order-canceled')}}">Orders Canceled</a>
                     <hr>
                 </div>
                 <div class="card-body">
@@ -21,7 +22,7 @@
                                 <tr>
                                     <td>{{$item->tracking_no}}</td>
                                     <td>{{$item->total}}</td>
-                                    <td>{{$item->status == '0' ? 'pending': 'completed'}}</td>
+                                    <td>{{$item->status}}</td>
                                     <td>
                                         <a href="admin/view-order/{{$item->id}}" class="btn btn-primary" >view</a>
                                     </td>

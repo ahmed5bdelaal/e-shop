@@ -22,7 +22,7 @@ class StripeController extends Controller
                     "source" => $request->stripeToken,
                     "description" => "Making test payment." 
             ]);
-            return redirect('/')->with('status','Payment has been successfully processed.');
+            
         }catch(\Exception $e){
             return response()->json([
                 'status'=>'some error try again',

@@ -51,19 +51,20 @@ Cart
 @php
     $total = 0;
 @endphp
+@if ($cart->count() > 0)
 @foreach ($cart as $item)
 <div class="cart-single-list p_data">
     <div class="row align-items-center">
     <div class="col-lg-1 col-md-1 col-12">
-    <a href="product-details.html"><img src="{{asset('assets/uploads/product/'.$item->product->image[0])}}" alt="#"></a>
+    <a href="/get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->product->image[0])}}" alt="#"></a>
     </div>
     <div class="col-lg-4 col-md-3 col-12">
-    <h5 class="product-name"><a href="product-details.html">
-    {{$item->product->name}}</a></h5>
-    <p class="product-des">
-    <span><em>Type:</em> {{$item->product->category->name}}</span>
-    <span><em>Color:</em> Black</span>
-    </p>
+        <h5 class="product-name"><a href="/get-product/{{$item->id}}">
+        {{$item->product->name}}
+        </a></h5>
+        <p class="product-des">
+            {{$item->product->s_disc}}
+        </p>
     </div>
     <div class="col-lg-2 col-md-2 col-12">
     <div class="count-input">
@@ -79,7 +80,7 @@ Cart
     </div>
     <div class="col-lg-1 col-md-2 col-12">
     <input type="hidden" class="prod_id" value="{{$item->prod_id}}">
-    <a href="#" class="remove-item remove"><i class="lni lni-close"></i></a>
+    <a href="#" class="remove-item remove-cart"><i class="lni lni-close"></i></a>
     </div>
     </div>
     </div>
@@ -87,12 +88,20 @@ Cart
         $total += $item->product->s_price * $item->prod_qty ;
     @endphp
 @endforeach
-
+@else
+    <div class="row align-items-center">
+        <div class="col-lg-4 col-md-3 col-12">
+        </div>
+        <div class="col-lg-4 col-md-3 col-12">
+            <h3>No Products</h3>
+        </div>
+    </div>
+@endif
 
 </div>
 <div class="row">
 <div class="col-12">
-
+@if ($cart->count() > 0)
 <div class="total-amount">
 <div class="row">
 <div class="col-lg-8 col-md-6 col-12">
@@ -143,7 +152,7 @@ Cart
 </div>
 </div>
 </div>
-
+@endif
 </div>
 </div>
 </div>

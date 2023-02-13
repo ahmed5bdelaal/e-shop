@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('profit');
             $table->string('state');
             $table->string('total');
-            $table->tinyInteger('status')->default('0');
+            $table->enum('status',['new','process','delivered','cancel'])->default('new');
             $table->string('message')->nullable();
             $table->string('tracking_no');
             $table->timestamps();

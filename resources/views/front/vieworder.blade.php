@@ -55,6 +55,24 @@
                                     </tbody>
                                 </table>
                                 <h4>Grand total : {{$order->total}}</h4>
+                                <label for="">Order Status</label><br>
+                                <form id="form" action="{{url('cancelOrder/'.$order->id)}}" method="post">
+                                    @csrf
+                                    @if($order->status != 'cancel')
+                                        @if ($order->status != 'delivered')
+                                                <input type="hidden" name="order_status" value="cancel">
+                                                <button type="" class="btn btn-primary show_confirm" >Cancel Order</button>
+                                        @else
+                                            <button type="" class="btn btn-primary" >Order Delivered</button>
+                                        @endif
+                                    @else
+                                        <button type="" class="btn btn-primary" >Order Canceled</button>
+                                        @if($order->message)
+                                            <label for="">Message</label>
+                                            <div class="border p-2">{{$order->message}}</div>
+                                        @endif
+                                    @endif
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -63,3 +81,25 @@
         </div>
     </div>
 @endsection
+@push('javascript')
+<script type="text/javascript">
+    $('.show_confirm').click(function(event){
+        var form = $(this).closest('form');
+        var name = $(this).data('name');
+        event.preventDefault();
+        swal.fire({
+            title: "what the reason for that",
+            text: "Write something interesting:",
+            input: 'text',
+            showCancelButton: true,
+            closeOnConfirm: false,
+            inputPlaceholder: "what the reason for that"
+        }).then((result) => {
+            if (result.value) {
+                document.getElementById("form").innerHTML += '<input type="hidden" name="message" value="'+result.value+'">';
+                form.submit();
+            }
+        });
+    })
+</script>
+@endpush

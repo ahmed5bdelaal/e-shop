@@ -82,6 +82,7 @@ if(is_countable($product->image) && count($product->image) > 1) {
 <div class="col-lg-4 col-md-4 col-12">
 <div class="form-group quantity">
 <input type="hidden" value="{{$product->id}}" class="prod_id" >
+<input type="hidden"  value="{{$product->qty}}" class="o-qty" >
 <label for="color">Quantity</label>
 <select class="form-control qty">
 <option>1</option>
@@ -112,7 +113,7 @@ if(is_countable($product->image) && count($product->image) > 1) {
 </div> --}}
 <div class="col-lg-4 col-md-4 col-12">
 <div class="wish-button">
-<button class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
+<button class="btn addToWishlist"><i class="lni lni-heart"></i> Add to Wishlist</button>
 </div>
 </div>
 </div>

@@ -130,7 +130,8 @@ suffered alteration in some form.</p>
     <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
     </a>
     <div class="button">
-    <button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
+    <button class="btn addToCart"><i class="lni lni-cart"></i>Add to Cart</button>
+    <button class="btn addToWishlist"><i class="lni lni-heart"></i>Add to Wish</button>
     <input type="hidden" value="{{$item->id}}" class="prod_id" >
     <input type="hidden"  value="1" class="qty" >
     <input type="hidden"  value="{{$item->qty}}" class="o-qty" >
@@ -216,7 +217,8 @@ suffered alteration in some form.</p>
     <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
     </a>
     <div class="button">
-    <button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
+    <button class="btn addToCart"><i class="lni lni-cart"></i>Add to Cart</button>
+    <button class="btn addToWishlist"><i class="lni lni-heart"></i>Add to Wish</button>
     <input type="hidden" value="{{$item->id}}" class="prod_id" >
     <input type="hidden"  value="1" class="qty" >
     <input type="hidden"  value="{{$item->qty}}" class="o-qty" >
@@ -326,8 +328,10 @@ suffered alteration in some form.</p>
 <div class="brands-logo-carousel d-flex align-items-center justify-content-between">
     @foreach ($brands as $item)
     <div class="brand-logo">
-        <img src="{{asset('assets/uploads/brand/'.$item->photo)}}" alt="#">
-        </div>
+        <a href="all-products?brand={{$item->id}}">
+            <img src="{{asset('assets/uploads/brand/'.$item->photo)}}" alt="#">
+        </a>
+    </div>
     @endforeach
  </div>
 </div>

@@ -43,6 +43,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js" integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @yield('scripts')
     <script>
             // Your web app's Firebase configuration
             var firebaseConfig = {
@@ -83,6 +84,45 @@
                 new Notification(title, {body});
             });
     </script>
+    <script>
+          $('.all').click(function (e) { 
+            e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    method: "get",
+                    url: "/notice-readAll",
+                    success: function (response) {
+
+                    }
+                });
+          });
+        </script>
+        <script>
+            $('.nn').click(function (e) { 
+              e.preventDefault();
+              var id = document.getElementById("noticeId").value;
+              var route = document.getElementById("noticeData").value;
+                  $.ajaxSetup({
+                      headers: {
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      }
+                  });
+                  $.ajax({
+                      method: "post",
+                      url: "/notice-read",
+                      data:{
+                        'id':id,
+                      },
+                      success: function (response) {
+                        window.location.href = route;
+                      }
+                  });
+            });
+          </script>
     @if (session('status'))
         <script>                
             Swal.fire({
@@ -105,6 +145,5 @@
             })
         </script>                
     @endif         
-    @yield('scripts')
 </body>
 </html>

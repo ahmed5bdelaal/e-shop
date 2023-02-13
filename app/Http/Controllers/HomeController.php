@@ -18,18 +18,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-   
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         return view('/home');
@@ -84,13 +72,6 @@ class HomeController extends Controller
         $pdf = PDF::loadView('admin.order.pdf', compact('order'));
         return $pdf->download($order->tracking_no .'.pdf');
   
-    }
-
-    public function sendmail($id)
-    {
-        $order = Order::find($id);
-        Mail::to($order->email)->send(new OrderMail($order));
-        return redirect()->back()->with('status','order mail has been sent to'.$order->name);
     }
 
     public function updateToken(Request $request){

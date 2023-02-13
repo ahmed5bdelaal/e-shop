@@ -3,7 +3,6 @@
             <div class="card">
                 <div class="card-header">
                     <a class="btn btn-primary" style="float: right" href="{{ url('/downloadPDF/'.$order->id) }}">Export to PDF</a>
-                    <a class="btn btn-success" style="float: right" href="{{ url('/send-email/'.$order->id) }}">Send email to {{$order->fname}}</a>
                     <h1>Order</h1>
                     <hr>
                 </div>
@@ -52,17 +51,42 @@
                                 </tbody>
                             </table>
                             <h4>Grand total : {{$order->total}}</h4>
+                            @if($order->status != 'cancel')
                             <form action="{{url('update-order/'.$order->id)}}" method="post">
                                 @csrf
                             <label for="">Order Status</label><br>
-                            <select class="form-select" name="order_status" aria-label="Default select example">
-                                <option {{$order->status == '0' ? 'selected':''}} value="0">Pending</option>
-                                <option {{$order->status == '1' ? 'selected':''}} value="1">completed</option>
+                            <select id="status" onchange="val()" class="form-select" name="order_status" aria-label="Default select example">
+                                <option {{$order->status == 'new' ? 'selected':''}} value="new">New</option>
+                                <option {{$order->status == 'process' ? 'selected':''}} value="process">Process</option>
+                                <option {{$order->status == 'delivered' ? 'selected':''}} value="delivered">Delivered</option>
+                                <option {{$order->status == 'cancel' ? 'selected':''}} value="cancel">Cancel</option>
                             </select>
                             <button type="submit" class="btn btn-primary" >change status</button>
+                            <br>
+                            <br>
+                            <input id="of" class="ofer border p-2" type="text" name="message" placeholder="what the reason for that">
                             </form>
+                            @else
+                                <button type="" class="btn btn-primary" >Order Canceled</button>
+                            @endif
+                            @if($order->message)
+                            <label for="">Message</label>
+                            <div class="border p-2">{{$order->message}}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>            
+@endsection
+@section('scripts')
+    <script>
+    function val() {
+        d = document.getElementById("status").value;
+        if(d == "cancel") {
+            document.getElementById('of').classList.remove('ofer');
+        }else{
+            document.getElementById('of').classList.add('ofer');
+        }
+    }
+    </script>
 @endsection

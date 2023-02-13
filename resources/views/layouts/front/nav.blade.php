@@ -118,13 +118,13 @@
 </div>
 <div class="navbar-cart">
 <div class="wishlist">
-<a href="#">
+<a href="{{url('/wishlist')}}">
 <i class="lni lni-heart"></i>
-<span class="total-items">0</span>
+<span class="total-items count-wishlist">0</span>
 </a>
 </div>
 <div class="cart-items">
-<a href="{{url('cart')}}" class="main-btn">
+<a href="{{url('/cart')}}" class="main-btn">
 <i class="lni lni-cart"></i>
  <span class="total-items count-cart">0</span>
 </a>
@@ -161,16 +161,19 @@
 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
 <ul id="nav" class="navbar-nav ms-auto">
 <li class="nav-item">
-<a href="/" class="{{Request::is('/') ? 'active' : '';}}" aria-label="Toggle navigation">Home</a>
+<a href="/" class="{{Request::is('/') ? 'active' : ' ';}}" aria-label="Toggle navigation">Home</a>
 </li>
 <li class="nav-item">
-  <a href="/all-products" class="{{Request::is('/all-products') ? 'active' : '';}}">Products</a>
+  <a href="/all-products" class="{{Request::is('/all-products') ? 'active' : ' ';}}">Products</a>
   </li>
 <li class="nav-item">
-  <a href="/my-orders" class="{{Request::is('/my-orders') ? 'active' : '';}}">Orders</a>
+  <a href="/my-orders" class="{{Request::is('/my-orders') ? 'active' : ' ';}}">Orders</a>
 </li>
 <li class="nav-item">
-  <a href="/cart" class="{{Request::is('/cart') ? 'active' : '';}}">Cart</a>
+  <a href="/cart" class="{{Request::is('cart') ? 'active' : ' ';}}">Cart</a>
+</li>
+<li class="nav-item">
+  <a href="/wishlist" class="{{Request::is('wishlist') ? 'active' : ' ';}}">Washlist</a>
 </li>
 </ul>
 </div> 

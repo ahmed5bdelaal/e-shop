@@ -108,7 +108,7 @@
               @if($reports)
                 @foreach ($reports as $report)
                 <tr>
-                    <td>{{$report->month}}</td>
+                    <td>{{date('F', mktime(0, 0, 0, $report->month, 10))}}</td>
                     <td>{{$report->total}}</td>
                     <td>{{$report->count}}</td>
                     <td>{{$report->profit}}</td>
@@ -135,7 +135,7 @@
       var ordersChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: [@foreach ($s_year_chart as $order) '{{ $order->month }}', @endforeach],
+          labels: [@foreach ($s_year_chart as $order) '{{ date("F", mktime(0, 0, 0, $order->month, 10)) }}', @endforeach],
           datasets: [{
             label: 'sales for year',
             data: [@foreach ($s_year_chart as $order) '{{ $order->total }}', @endforeach],
@@ -160,7 +160,7 @@
       var ordersChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: [@foreach ($p_year_chart as $order) '{{ $order->month }}', @endforeach],
+          labels: [@foreach ($p_year_chart as $order) '{{ date("F", mktime(0, 0, 0, $order->month, 10)) }}', @endforeach],
           datasets: [{
             label: 'profit for year',
             data: [@foreach ($p_year_chart as $order) '{{ $order->profit }}', @endforeach],

@@ -102,6 +102,8 @@ Route::middleware(['auth','isadmin'])->group(function(){
         Route::get('/downloadPDF/{id}','downloadPDF');
         Route::get('/send-email/{id}','sendmail');
         Route::post('/send-notification','notification');
+        Route::post('/remove-contact/{id}','removeContact');
+        Route::get('/contacts','contacts');
     });
 
     Route::controller(UserController::class)->group(function(){
@@ -163,5 +165,5 @@ Route::middleware(['auth','isadmin'])->group(function(){
         Route::get('/deleteImage','deleteImage');
     });
 });
-
+Route::post('/add-contact', [App\Http\Controllers\Front\FrontController::class,'addContact']);
 Route::get('/home', [App\Http\Controllers\HomeController::class,'index'])->name('home');

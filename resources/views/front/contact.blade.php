@@ -43,7 +43,7 @@ Ipsum available, but the majority have suffered alteration in some form.</p>
 <i class="lni lni-map"></i>
 <h3>Address</h3>
 <ul>
-<li>44 Shirley Ave. West Chicago,<br> IL 60185, USA.</li>
+<li>{{$settings->address}},</li>
 </ul>
 </div>
 
@@ -52,7 +52,7 @@ Ipsum available, but the majority have suffered alteration in some form.</p>
 <i class="lni lni-phone"></i>
 <h3>Call us on</h3>
 <ul>
-<li><a href="tel:+18005554400">+1 800 555 44 00 (Toll free)</a></li>
+<li><a href="tel:+2{{$settings->phone}}">{{$settings->phone}}(Toll free)</a></li>
 <li><a href="tel:+321556667890">+321 55 666 7890</a></li>
 </ul>
 </div>
@@ -73,7 +73,8 @@ Ipsum available, but the majority have suffered alteration in some form.</p>
 <div class="col-lg-8 col-md-12 col-12">
 <div class="contact-form-head">
 <div class="form-main">
-<form class="form" method="post" action="assets/mail/mail.php">
+<form class="form" method="post" action="{{url('add-contact')}}">
+@csrf
 <div class="row">
 <div class="col-lg-6 col-md-6 col-12">
 <div class="form-group">

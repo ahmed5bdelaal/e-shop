@@ -12,7 +12,7 @@ Mail Success - E-Shop
 <h2>Your Mail Sent Successfully</h2>
 <p>Thanks for contacting with us, We will get back to you asap.</p>
 <div class="button">
-<a href="index.html" class="btn">Back to Home</a>
+<a href="/" class="btn">Back to Home</a>
 </div>
 </div>
 </div>

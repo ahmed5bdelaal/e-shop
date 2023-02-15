@@ -67,6 +67,12 @@ Tip 2: you can also add an image using data-image tag
                     <p>Users</p>
                 </a>
             </li>
+            <li class="nav-item {{Request::is('contacts') ? 'active' : '';}}">
+                <a class="nav-link" href="{{url('/contacts')}}">
+                    <i class="nc-icon nc-circle-09"></i>
+                    <p>Contacts</p>
+                </a>
+            </li>
             <li class="nav-item {{Request::is('Settings') ? 'active' : '';}}">
                 <a class="nav-link" href="{{url('settings')}}">
                     <i class="nc-icon nc-circle-09"></i>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -165,5 +166,20 @@ class FrontController extends Controller
     public function contact()
     {
         return view('front.contact');
+    }
+
+    public function addContact(Request $request)
+    {
+        $data=$request->all();
+        $status=Contact::create($data);
+        if($status){
+            Notice::create([
+                'type' => 'new contact',
+                'data' => '/contacts',
+            ]);
+            return view('layouts.mailSuccsess');
+        }else{
+            return redirect()->back()->with('error','some error try again');
+        }
     }
 }

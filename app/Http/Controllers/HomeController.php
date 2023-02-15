@@ -8,12 +8,11 @@ use App\Models\setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Helper;
-use Mail;
 use Illuminate\Support\Facades\File; 
 use Kutia\Larafirebase\Facades\Larafirebase;
-use App\Mail\OrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\SettingsRequest;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -113,5 +112,22 @@ class HomeController extends Controller
             report($e);
             return redirect()->back()->with('error','Something goes wrong while sending notification.');
         }
+    }
+
+    public function removeContact($id)
+    {
+        $contact=Contact::firstOrFill($id);
+        $status=$contact->delete();
+        if($status){
+            return redirect()->back()->with('status','contact deleted Successfully!!');
+        }else{
+            return redirect()->back()->with('error','Something goes wrong try again.');
+        }
+    }
+
+    public function contacts()
+    {
+        $contacts=Contact::all();
+        return view('admin.contacts',compact('contacts'));
     }
 }

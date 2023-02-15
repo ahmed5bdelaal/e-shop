@@ -88,11 +88,9 @@
     <div class="single-footer f-link">
     <h3>Shop Departments</h3>
     <ul>
-    <li><a href="javascript:void(0)">Computers & Accessories</a></li>
-    <li><a href="javascript:void(0)">Smartphones & Tablets</a></li>
-    <li><a href="javascript:void(0)">TV, Video & Audio</a></li>
-    <li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
-    <li><a href="javascript:void(0)">Headphones</a></li>
+        @foreach ($categorys as $item)
+        <li><a href="all-products?category={{$item->id}}">{{$item->name}}</a></li>
+      @endforeach
     </ul>
     </div>
     

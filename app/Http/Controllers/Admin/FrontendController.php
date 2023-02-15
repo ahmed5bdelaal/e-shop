@@ -27,10 +27,10 @@ class FrontendController extends Controller
     public function index(){
         
         $products=Product::count();
-        $trend = Product::where('trending','1')->take(5)->get();
+        $trend = Product::where('trending','1')->take(5)->with('images')->get();
         $a_products=Product::where('qty','<','5')->count();
         $o_products=Product::where('qty','=','0')->count();
-        $top = Product::select('name','id','image','o_price')->orderBy('rate','desc')->take(5)->get();
+        $top = Product::select('name','id','o_price')->orderBy('rate','desc')->take(5)->get();
         $orderss=Order::count();
         $orders = Order::selectRaw('MONTH(created_at) as month, COUNT(*) as count')->where('status','delivered')
         ->whereYear('created_at', Carbon::now()->year)

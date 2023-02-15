@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Helper;
+use Illuminate\Support\Facades\File; 
 use Hash;
 
 class UserController extends Controller
@@ -27,11 +28,6 @@ class UserController extends Controller
         'phone'=>'required|string',
     ]);
     $data=$request->all();
-    if($request->hasFile('photo')){
-        $path='assets/images/users';
-        $filename=Helper::uplodePhoto($request->photo,$path);
-        $data['photo'] = $filename;
-    }
     $user=User::where('id',auth()->id())->first();
     $status=$user->update($data);
     if($status){
@@ -49,17 +45,39 @@ class UserController extends Controller
                 'n_password'=>'required',
         ]);
 
-        $user=User::where('id',auth()->id())->first();
-
         if(!Hash::check($request->o_password, auth()->user()->password)){
             return back()->with("error", "Old Password Doesn't match!");
         }
 
-        User::whereId(auth()->user()->id)->update([
+        $status=User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->n_password)
         ]);
 
-        return redirect()->back()->with('status','Password successfully updated');
+        if($status){
+            return redirect()->back()->with('status','Passsword successfully updated');
+        }
+        else{
+            return redirect()->back()->with('status','Please try again');
+        }        }
+
+    public function photoUser(Request $request)
+    {
+        $user=User::where('id',auth()->id())->first();
+        $pathDelete = 'assets/images/users/'.$user->photo;
+        if(File::exists($pathDelete)){
+            File::delete($pathDelete);
+        }
+
+        $path='assets/images/users';
+        $filename=Helper::uplodePhoto($request->photo,$path);
+        $user->photo = $filename;
+        $status = $user->update();
+        if($status){
+            return redirect()->back()->with('status','Photo successfully updated');
+        }
+        else{
+            return redirect()->back()->with('status','Please try again');
+        }    
     }
 
     public function users()
@@ -75,7 +93,9 @@ class UserController extends Controller
         $status=$user->update();
         if($status){
             return redirect()->back()->with('status',$user->name.' is admin');
-        }
+        }else{
+            return redirect()->back()->with('status','Please try again');
+        }    
     }
 
     public function removeUser($id)
@@ -84,6 +104,8 @@ class UserController extends Controller
         $status=$user->delete();
         if($status){
             return redirect()->back()->with('status',$user->name.' is deleted');
-        }
+        }else{
+            return redirect()->back()->with('status','Please try again');
+        }    
     }
 }

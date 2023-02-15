@@ -15,6 +15,7 @@ use App\Mail\OrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Requests\SettingsRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -30,37 +31,43 @@ class HomeController extends Controller
 
     public function settingsUpdate(SettingsRequest $request){
         $set=setting::first();
-        if(!$set || Auth::user()->role_as === 1){
+        if(!$set || Auth::user()->role_as == 1){
             $data=$request->validated();
             if($request->hasFile('logo')){
-                $pathDelete = 'assets/images/logo/'.$set->logo;
-                if(File::exists($pathDelete)){
-                    File::delete($pathDelete);
-                }
                 $path='assets/images/logo';
                 $filename=Helper::uplodePhoto($request->logo,$path);
                 $data['logo'] = $filename;
             }
-            if($request->hasFile('photo')){
-                $pathDelete = 'assets/images/logo/'.$set->photo;
-                if(File::exists($pathDelete)){
-                    File::delete($pathDelete);
-                }
-                $path='assets/images/logo';
-                $filename=Helper::uplodePhoto($request->photo,$path);
-                $data['photo'] = $filename;
-            }
             if(!$set){
                 $status=Setting::create($data);
+                $admin = new User;
+                $admin->name = $request->firstname .' '.$request->lastname;
+                $admin->email = $request->emailUser;
+                $admin->role_as = 1;
+                $admin->password = Hash::make($request->password);
+                if($request->hasFile('photo')){
+                    $path='assets/images/users';
+                    $filename=Helper::uplodePhoto($request->photo,$path);
+                    $admin->photo = $filename;
+                }
+                $user = $admin->save();
+                Auth::login($admin);
+                if($status && $user){
+                    return redirect('/dashboard')->with('status','Setting successfully updated');
+                }
             }else{
-                $settings=Setting::first();
-                $status=$settings->update($data);
-            }
-            if($status){
-                return redirect()->back()->with('status','Setting successfully updated');
-            }
-            else{
-                return redirect()->back()->with('error','Please try again');
+                if($request->hasFile('logo')){
+                    $pathDelete = 'assets/images/logo/'.$set->logo;
+                    if(File::exists($pathDelete)){
+                        File::delete($pathDelete);
+                    }
+                }
+                $status=$set->update($data);
+                if($status){
+                    return redirect()->back()->with('status','Setting successfully updated');
+                }else{
+                    return redirect()->back()->with('error','Please try again');
+                }
             }
         }
     }

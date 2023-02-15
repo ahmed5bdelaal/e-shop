@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Helpers\Helper;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use DataTables;
@@ -40,7 +41,7 @@ class ProductController extends Controller
         })
         ->addcolumn('image',function($row){
             return $btn =
-            '<img src="'.asset('assets/uploads/product/'.$row->image[0]).'" width="100%" alt="#">';
+            '<img src="'.asset('assets/uploads/product/'.Image::whereId($row->id)->value('name')).'" width="100%" alt="#">';
             
         })
         ->rawColumns(['action','category','image'])
@@ -56,14 +57,6 @@ class ProductController extends Controller
 
     public function insert(ProductStoreRequest $request){  
         $data = $request->validated();
-        if($request->hasFile('image')){
-            foreach($request->image as $key => $file)
-            {
-                $filename= Helper::uplodePhotoProduct($file);
-                $image[]= $filename;
-            }
-            $data['image']=$image;
-        }
         if($request->input('dis') == true){
             $data['offer']=$request->input('offer');
         }
@@ -71,6 +64,16 @@ class ProductController extends Controller
         $data['dis']=$request->input('dis') == true ? '1':'0';
         $data['trending']=$request->input('trending') == true ? '1':'0';
         $status=Product::create($data);
+        if($request->hasFile('image')){
+            foreach($request->image as $key => $file)
+            {
+                $filename= Helper::uplodePhotoProduct($file);
+                $image= new Image;
+                $image->product_id=$status->id;
+                $image->name= $filename;
+                $image->save();
+            }
+        }
         if($status){
             return redirect('products')->with('status','Product successfully created');
          }else{
@@ -78,6 +81,40 @@ class ProductController extends Controller
          }
     }
 
+    public function deleteImage(Request $request)
+    {
+        $image=Image::whereId($request->id)->first();
+        $status=$image->delete();
+        if($status){
+            return response()->json(['status','image deleted']);
+        }else{
+            return response()->json(['status','some error try again']);
+        }
+    }
+
+    public function imagesProduct($id)
+    {
+       $product=Product::whereId($id)->first();
+       return view('admin.product.images',compact('product'));
+    }
+
+    public function addImage(Request $request ,$id)
+    {
+        if($request->image){
+            foreach($request->image as $file)
+            {
+                $filename= Helper::uplodePhotoProduct($file);
+                $image= new Image;
+                $image->product_id=$id;
+                $image->name= $filename;
+                $image->save();
+            }
+            return redirect('/images-product/'.$id)->with('status','added succsessfly');
+        }else{
+            return redirect()->back()->with('status','error');
+        }
+    }
+    
     public function edit($id)
     {   
         $product = product::with('brand','category')->findOrFail($id);

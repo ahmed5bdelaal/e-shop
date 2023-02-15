@@ -47,7 +47,7 @@
                                                 <td>{{$item->product->name}}</td>
                                                 <td>{{$item->qty}}</td>
                                                 <td>
-                                                    <img src="{{asset('assets/uploads/product/'.$item->product->image[0])}}" width="50px" alt="">
+                                                    <img src="{{asset('assets/uploads/product/'.$item->product->name($item->product->id))}}" width="50px" alt="">
                                                 </td>
                                                 <td>{{$item->price}}</td>
                                             </tr>

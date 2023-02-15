@@ -126,8 +126,11 @@ suffered alteration in some form.</p>
 <div class="col-lg-3 col-md-6 col-12">
     <div class="single-product product_data">
     <div class="product-image">
+        @php
+            $name=App\Models\Product::name($item->id);
+        @endphp
     <a href="get-product/{{$item->id}}">
-    <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
+    <img src="{{asset('assets/uploads/product/'.$name)}}" alt="#">
     </a>
     <div class="button">
     <button class="btn addToCart"><i class="lni lni-cart"></i>Add to Cart</button>
@@ -214,7 +217,10 @@ suffered alteration in some form.</p>
 <div class="single-product product_data">
     <div class="product-image">
     <a href="get-product/{{$item->id}}">
-    <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
+        @php
+            $name=App\Models\Product::name($item->id);
+        @endphp
+    <img src="{{asset('assets/uploads/product/'.$name)}}" alt="#">
     </a>
     <div class="button">
     <button class="btn addToCart"><i class="lni lni-cart"></i>Add to Cart</button>
@@ -259,14 +265,14 @@ suffered alteration in some form.</p>
 <div class="row">
 <div class="col-lg-4 col-md-4 col-12 custom-responsive-margin">
 <h4 class="list-title">Best Sellers</h4>
-
     @foreach ($bestSelling as $item)
         @php
             $product=App\Models\Product::where('id',$item->prod_id)->first();
+            $name=App\Models\Product::name($product->id);
         @endphp
         <div class="single-list">
             <div class="list-image">
-            <a href="get-product/{{$product->id}}"><img src="{{asset('assets/uploads/product/'.$product->image[0])}}" alt="#"></a>
+            <a href="get-product/{{$product->id}}"><img src="{{asset('assets/uploads/product/'.$name)}}" alt="#"></a>
             </div>
             <div class="list-info">
             <h3>
@@ -283,7 +289,10 @@ suffered alteration in some form.</p>
 @foreach ($new as $item)
 <div class="single-list">
     <div class="list-image">
-    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#"></a>
+        @php
+            $name=App\Models\Product::name($item->id);
+        @endphp
+    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$name)}}" alt="#"></a>
     </div>
     <div class="list-info">
     <h3>
@@ -300,7 +309,10 @@ suffered alteration in some form.</p>
 @foreach ($top as $item)
 <div class="single-list">
     <div class="list-image">
-    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#"></a>
+        @php
+            $name=App\Models\Product::name($item->id);
+        @endphp
+    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$name)}}" alt="#"></a>
     </div>
     <div class="list-info">
     <h3>

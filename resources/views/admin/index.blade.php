@@ -89,7 +89,7 @@
               @foreach ($top as $item)
               <tr>
               <td>{{$loop->iteration}}</td>
-              <td><a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" width="30%" alt="#"></a></td>
+              <td><a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->name($item->id))}}" width="30%" alt="#"></a></td>
               <td>{{$item->name}}</td>
               </tr>
               @endforeach
@@ -110,7 +110,7 @@
               @foreach ($trend as $item)
               <tr>
               <td>{{$loop->iteration}}</td>
-              <td><a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" width="30%" alt="#"></a></td>
+              <td><a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->name($item->id))}}" width="30%" alt="#"></a></td>
               <td>{{$item->name}}</td>
               </tr>
               @endforeach

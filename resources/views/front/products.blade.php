@@ -166,7 +166,7 @@ $5,000
 <div class="col-lg-3 col-md-6 col-12">
     <div class="single-product product_data">
     <div class="product-image">
-    <img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#">
+    <img src="{{asset('assets/uploads/product/'.$item->name($item->id))}}" alt="#">
     <div class="button">
     <button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
     <button class="btn addToWishlist"><i class="lni lni-heart"></i> Add to Wishlist</button>
@@ -218,7 +218,7 @@ $5,000
 <div class="row align-items-center">
 <div class="col-lg-4 col-md-4 col-12">
 <div class="product-image">
-    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->image[0])}}" alt="#"></a>
+    <a href="get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->name($item->id))}}" alt="#"></a>
 <div class="button">
 <button class="btn addToCart"><i class="lni lni-cart"></i> Add to Cart</button>
 <button class="btn addToWishlist"><i class="lni lni-heart"></i>Add to Wish</button>

@@ -82,47 +82,48 @@
         
             messaging.onMessage(function({data:{body,title}}){
                 new Notification(title, {body});
+                
             });
     </script>
     <script>
-          $('.all').click(function (e) { 
+        $('.all').click(function (e) { 
+          e.preventDefault();
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+              $.ajax({
+                  method: "get",
+                  url: "/notice-readAll",
+                  success: function (response) {
+                    $('.notice').load(location.href + ' .notice > *');
+                  }
+              });
+        });
+      </script>
+      <script>
+          $('.nn').click(function (e) { 
             e.preventDefault();
+            var id = $(this).closest('.rrr').find('.noticeId').val();
+            var route = $(this).closest('.rrr').find('.noticeData').val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
                 $.ajax({
-                    method: "get",
-                    url: "/notice-readAll",
+                    method: "post",
+                    url: "/notice-read",
+                    data:{
+                      'id':id,
+                    },
                     success: function (response) {
-
+                      window.location.href = route;
                     }
                 });
           });
         </script>
-        <script>
-            $('.nn').click(function (e) { 
-              e.preventDefault();
-              var id = document.getElementById("noticeId").value;
-              var route = document.getElementById("noticeData").value;
-                  $.ajaxSetup({
-                      headers: {
-                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                      }
-                  });
-                  $.ajax({
-                      method: "post",
-                      url: "/notice-read",
-                      data:{
-                        'id':id,
-                      },
-                      success: function (response) {
-                        window.location.href = route;
-                      }
-                  });
-            });
-          </script>
     @if (session('status'))
         <script>                
             Swal.fire({

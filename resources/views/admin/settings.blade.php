@@ -46,24 +46,6 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
-        <div class="form-group col-md-6 mb-3">
-          <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
-          <div class="input-group">
-              <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                  <i class="fa fa-picture-o"></i> Choose
-                  </a>
-              </span>
-          <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$data->photo}}">
-        </div>
-        <div id="holder" style="margin-top:15px;max-height:100px;"></div>
-
-          @error('photo')
-          <span class="text-danger">{{$message}}</span>
-          @enderror
-        </div>
-
         <div class="form-group col-md-6 mb-3">
           <label for="address" class="col-form-label">Address <span class="text-danger">*</span></label>
           <input type="text" class="form-control" name="address" required value="{{$data->address}}">
@@ -86,6 +68,8 @@
           @enderror
         </div>
         <div class="form-group col-md-6 mb-3">
+        </div>
+        <div class="form-group col-md-6 mb-3">
           <label for="facebock" class="col-form-label">Username For Facebock <span class="text-danger">*</span></label>
           <div class="input-group">
             <span style="background-color: #8f9fce" class="input-group-addon">https://www.facebock.com/</span>
@@ -94,7 +78,8 @@
           @error('facebock')
           <span class="text-danger">{{$message}}</span>
           @enderror
-        </div><div class="form-group col-md-6 mb-3">
+        </div>
+        <div class="form-group col-md-6 mb-3">
           <label for="twitter" class="col-form-label">Username For Twitter <span class="text-danger">*</span></label>
           <div class="input-group">
             <span style="background-color: #8f9fce" class="input-group-addon">https://www.twitter.com/</span>

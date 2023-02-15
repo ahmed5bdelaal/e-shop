@@ -86,6 +86,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('profile','index');
         Route::post('upProfile','upProfile');
         Route::post('upPassword','upPassword');
+        Route::post('photoUser','photoUser');
     });
 });
 
@@ -157,6 +158,9 @@ Route::middleware(['auth','isadmin'])->group(function(){
         Route::get('edit-product/{id}','edit')->name('edit.product');
         Route::PUT('update-product/{id}','update');
         Route::post('remove-product/{id}','destroy');
+        Route::get('images-product/{id}','imagesProduct');
+        Route::post('/add-images/{id}','addImage');
+        Route::get('/deleteImage','deleteImage');
     });
 });
 

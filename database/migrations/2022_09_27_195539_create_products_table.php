@@ -23,7 +23,6 @@ return new class extends Migration
             $table->longText('disc');
             $table->string('o_price');
             $table->string('s_price');
-            $table->json('image');
             $table->string('rate')->default('0');
             $table->string('qty');
             $table->string('tax')->default('0');

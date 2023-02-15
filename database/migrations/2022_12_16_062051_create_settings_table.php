@@ -19,7 +19,6 @@ return new class extends Migration
             $table->longText('description');
             $table->text('short_des');
             $table->string('logo');
-            $table->string('photo');
             $table->string('address');
             $table->string('phone');
             $table->string('email');
@@ -27,7 +26,6 @@ return new class extends Migration
             $table->string('google');
             $table->string('twitter');
             $table->string('instagram');
-
             $table->timestamps();
         });
     }

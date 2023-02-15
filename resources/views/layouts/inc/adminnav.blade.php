@@ -23,9 +23,11 @@
                     <ul class="dropdown-menu">
                         @if ($notices)
                             @foreach($notices as $notice)
-                            <a class="dropdown-item nn" href="#">{{ $notice->type }}</a>
-                            <input type="hidden" value="{{$notice->id}}" id="noticeId">
-                            <input type="hidden" value="{{$notice->data}}" id="noticeData">
+                            <div class="rrr">
+                                <a class="dropdown-item nn" href="#">{{ $notice->type }}</a>
+                                <input type="hidden" value="{{$notice->id}}" class="noticeId">
+                                <input type="hidden" value="{{$notice->data}}" class="noticeData">
+                            </div>
                             @endforeach
                             <hr>
                             <a class="dropdown-item all" href="#">make all as read</a>
@@ -37,7 +39,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if(Auth::user()->photo)
                             <img src="{{ asset('assets/images/users/'.Auth::user()->photo) }}" alt="{{ Auth::user()->name }}" width="32" height="32" class="rounded-circle">
                         @else
@@ -45,7 +47,7 @@
                         @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="profile">profile</a>
+                        <a class="dropdown-item" href="/profile">profile</a>
                         <div class="divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -3,6 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h4>Edit Product</h4>
+            <a href="{{url('images-product/'.$product->id)}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add Product"><i class="fas fa-plus"></i>Images</a>
         </div>
         <div class="card-body">
            <form action="{{url('/update-product/'.$product->id)}}" method="post" enctype="multipart/form-data">
@@ -88,13 +89,6 @@
                 <div class="col-md-6 mb-3">
                     <label for="">meta keywords</label>
                     <textarea name="meta_keywords" class="form-control">{{$product->meta_keywords}}</textarea>
-                </div>
-                @if ($product->image)
-                    <img src="{{asset('assets/uploads/product/'.$product->image[0])}}" width="100" >
-                @endif
-                <div class="col-md-6">
-                    <label for="">image</label>
-                    <input type="file" name="image" class="form-control">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">submit</button>

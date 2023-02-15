@@ -56,7 +56,7 @@ Cart
 <div class="cart-single-list p_data">
     <div class="row align-items-center">
     <div class="col-lg-1 col-md-1 col-12">
-    <a href="/get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->product->image[0])}}" alt="#"></a>
+    <a href="/get-product/{{$item->id}}"><img src="{{asset('assets/uploads/product/'.$item->product->name($item->product->id))}}" alt="#"></a>
     </div>
     <div class="col-lg-4 col-md-3 col-12">
         <h5 class="product-name"><a href="/get-product/{{$item->id}}">

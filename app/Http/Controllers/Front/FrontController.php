@@ -22,7 +22,7 @@ class FrontController extends Controller
             if($settings){
                 return $this->index();
             }else{
-                return view('admin.setup');
+                return view('setup.setup');
             };
     }
 
@@ -30,12 +30,12 @@ class FrontController extends Controller
     {
         $categorys = Category::all();
         $brands= Brand::all();
-        $products = Product::where('trending','1')->take(4)->withCount('rating','category')->get();
-        $dis = Product::where('dis','1')->take(4)->withCount('rating','category')->get();
+        $products = Product::where('trending','1')->take(4)->withCount('rating','category','images')->get();
+        $dis = Product::where('dis','1')->take(4)->withCount('rating','category','images')->get();
         $bestSelling =OrderItem::groupBy('prod_id')
         ->selectRaw('sum(qty) as sum, prod_id')->orderBy("sum","desc")->limit(4)->get();
-        $top = Product::select('name','id','image','o_price')->orderBy('rate','desc')->take(4)->get();
-        $new = Product::select('name','id','image','o_price')->latest()->take(4)->get();
+        $top = Product::select('name','id','o_price')->orderBy('rate','desc')->take(4)->with('images')->get();
+        $new = Product::select('name','id','o_price')->latest()->take(4)->with('images')->get();
         return view('front.index',compact('categorys','bestSelling','products','new','top','dis','brands'));
     }
 
@@ -63,7 +63,7 @@ class FrontController extends Controller
     public function product($id)
     {
         
-        $product = Product::withCount('category')->findOrfail($id);
+        $product = Product::withCount('category','images')->findOrfail($id);
         $rating = Rating::where('prod_id',$id)->get();
         return view('front.single',compact('product','rating'));
     }
@@ -87,11 +87,11 @@ class FrontController extends Controller
                     }
                 });
             }else{
-                $products=Product::withCount('rating','category');
+                $products=Product::withCount('rating','category','images');
             }
     
             if($request->sort === 'all'){
-                $products=Product::withCount('rating','category'); 
+                $products=Product::withCount('rating','category','images'); 
             }elseif($request->sort === 'price_asc') {
                 $products->orderBy('o_price','asc');
             }elseif($request->sort === 'price_desc'){
@@ -110,7 +110,7 @@ class FrontController extends Controller
     public function category($id)
     {
         $category=Category::where('id',$id)->first();
-        $products=Product::where('cate_id',$id)->with('category','rating')->paginate(12);
+        $products=Product::where('cate_id',$id)->with('category','rating','images')->paginate(12);
         return view('front.category',compact('products','category'));
     }
 

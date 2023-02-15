@@ -31,20 +31,15 @@ Single
 <div class="product-images">
 <main id="gallery">
 <div class="main-img">
-<img src="{{asset('assets/uploads/product/'.$product->image[0])}}" id="current" alt="#">
+        @php
+            $name=App\Models\Product::name($product->id);
+        @endphp
+<img src="{{asset('assets/uploads/product/'.$name)}}" id="current" alt="#">
 </div>
-@php
-if(is_countable($product->image) && count($product->image) > 1) {
-    $num=count($product->image);
-}else{
-    $num=0;
-}
-    
-@endphp
 <div class="images">
-    @for ($i = 0; $i < $num; $i++)
-        <img src="{{asset('assets/uploads/product/'.$product->image[$i])}}" class="img" alt="#">
-    @endfor
+    @foreach ($product->images as $item)
+        <img src="{{asset('assets/uploads/product/'.$item->name)}}" class="img" alt="#">  
+    @endforeach
 </div>
 </main>
 </div>

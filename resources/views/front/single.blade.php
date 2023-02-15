@@ -1,4 +1,16 @@
 @extends('layouts.front')
+@section('meta')
+	<meta name="keywords" content="{{$product->meta_keywords}}">
+	<meta name="description" content="{{$product->s_disc}}">
+	<meta property="og:url" content="{{url('/get-product/'.$product->id)}}">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="{{$product->meta_title}}">
+        @php
+            $name=App\Models\Product::name($product->id);
+        @endphp
+	<meta property="og:image" content="{{$name}}">
+	<meta property="og:description" content="{{$product->meta_disc}}">
+@endsection
 @section('title')
 Single
 @endsection

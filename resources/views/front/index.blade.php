@@ -1,4 +1,13 @@
 @extends('layouts.front')
+@section('meta')
+	<meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
+	<meta name="description" content="{{$settings->short_des}}">
+	<meta property="og:url" content="{{url('/')}}">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="{{$settings->name}}">
+	<meta property="og:image" content="{{$settings->logo}}">
+	<meta property="og:description" content="{{$settings->description}}">
+@endsection
 @section('content')
 <section class="hero-area">
 <div class="container">

@@ -1,26 +1,43 @@
-## <p id="header" align="center">E-Shop</p>           
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="https://www.akoode.com/assets/img/ecommerce.gif" width="400" alt="Laravel Logo"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## E-Shop 
 
+E-Shop project is a complete E-Commerce solution for starting your online E-Commerce business. The E-Shop contains a powerful admin panel that allows you to manage products, category, coupons, orders, profits, and much more.
 
+## Main Characteristics :
+Front-End Features :
+- Shopping Cart, Wishlist, and Product Reviews in a Responsive Layout.
+- Discounts and Coupons.
+- Product properties include sale price, purchase price, and inventory.
+- Category.
+- Payment, discount, etc.
+- Search engine optimization (SEO).
+- Contact forms.
+- A product search form automatically.
+- Laravel Socialite (Facebook, Google, and Github) integration.
+- customer login.
+- Integration of payment methods (Paypal).
+- Order tracking system.
+- First Use Features (create settings and admin,You do not need to seeders)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Admin Features:
+- Product Manager.
+- Make Admin.
+- Brand manager.
+- Order manager.
+- Category manager.
+- User Management.
+- Coupon Administration.
+- System configuration.
+- Create a pdf order.
+- Push Notifications By Firebase.
+- Profile Preferences.
+- Profits System.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+User Features:
+- Order management.
+- review management.
+- profile settings.
 
 ## Learning Laravel
 

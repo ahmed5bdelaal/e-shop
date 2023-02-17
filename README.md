@@ -1,11 +1,11 @@
-<p align="center"><img src="https://www.akoode.com/assets/img/ecommerce.gif" width="400" alt="Laravel Logo"></p>
+<p align="center"><img src="https://www.akoode.com/assets/img/ecommerce.gif" width="200" alt="Laravel Logo"></p>
 
-## E-Shop 
+## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> E-Shop 
 
 E-Shop project is a complete E-Commerce solution for starting your online E-Commerce business. The E-Shop contains a powerful admin panel that allows you to manage products, category, coupons, orders, profits, and much more.
 
-## Main Characteristics :
-Front-End Features :
+## 🔥 Main Characteristics :
+🎨 Front-End Features :
 - Shopping Cart, Wishlist, and Product Reviews in a Responsive Layout.
 - Discounts and Coupons.
 - Product properties include sale price, purchase price, and inventory.
@@ -16,11 +16,11 @@ Front-End Features :
 - A product search form automatically.
 - Laravel Socialite (Facebook, Google, and Github) integration.
 - customer login.
-- Integration of payment methods (Paypal).
+- Integration of payment methods (Stripe).
 - Order tracking system.
 - First Use Features (create settings and admin,You do not need to seeders)
 
-Admin Features:
+:mailbox: Admin Features:
 - Product Manager.
 - Make Admin.
 - Brand manager.
@@ -33,50 +33,48 @@ Admin Features:
 - Push Notifications By Firebase.
 - Profile Preferences.
 - Profits System.
+- Sending a mail automatically when the admin confirms or cancels the order with the reason message.
+- Notifications (new order,Product is about to run out).
 
-User Features:
+👳 User Features:
 - Order management.
 - review management.
 - profile settings.
 
-## Learning Laravel
+## :hammer_and_wrench: Languages and Tools :
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40"height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" alt="Git" width="40" height="40"/>&nbsp
+<img src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-plain-wordmark.svg" title="jquery" alt="jquery" width="40" height="40"/>&nbsp
+<img src="https://github.com/devicons/devicon/blob/master/icons/laravel/laravel-plain-wordmark.svg" title="laravel" alt="laravel" width="40" height="40"/>&nbsp
+<img src="https://github.com/devicons/devicon/blob/master/icons/php/php-plain.svg" title="php" alt="php" width="40" height="40"/>&nbsp
+ <img src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-original.svg" title="php" alt="php" width="40" height="40"/>&nbsp
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Screenshots :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## ⚡Installation
 
-### Premium Partners
+1. Clone the repo and `cd` into it
+1. `composer install`
+1. Rename or copy `.env.example` file to `.env`
+1. `php artisan key:generate`
+1. Set your database credentials in your `.env` file
+1. Set your Stripe credentials in your `.env` file. Specifically `STRIPE_KEY` and `STRIPE_SECRET`
+1. Set your Firebase credentials in your `.env` file.
+1. `php artisan migrate`
+1. `npm install`
+1. `npm run dev`
+1. `php artisan serve` or use Laravel Valet or Laravel Homestead
+1. Visit `localhost:8000` in your browser
+1. Enter your information (ِAdmin) and store information (Settings) and it will redirect you to Dashboard.
+1. Enjoy 🤷‍♂️
+1. Visit `localhost:8000/dashboard` to go Dashboard.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 💡 If you see something to improve, don't hesitate 😊

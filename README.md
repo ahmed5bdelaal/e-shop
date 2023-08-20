@@ -62,13 +62,11 @@ E-Shop project is a complete E-Commerce solution for starting your online E-Comm
 ## ⚡Installation
 
 1. Clone the repo and `cd` into it
-1. `composer install`
 1. Rename or copy `.env.example` file to `.env`
-1. `php artisan key:generate`
+1. Upload and install sql file for database
 1. Set your database credentials in your `.env` file
-1. Set your Stripe credentials in your `.env` file. Specifically `STRIPE_KEY` and `STRIPE_SECRET`
-1. Set your Firebase credentials in your `.env` file.
-1. `php artisan migrate`
+1. `composer install`
+1. `php artisan key:generate`
 1. `npm install`
 1. `npm run dev`
 1. `php artisan serve` or use Laravel Valet or Laravel Homestead
@@ -76,5 +74,7 @@ E-Shop project is a complete E-Commerce solution for starting your online E-Comm
 1. Enter your information (ِAdmin) and store information (Settings) and it will redirect you to Dashboard.
 1. Enjoy 🤷‍♂️
 1. Visit `localhost:8000/dashboard` to go Dashboard.
+1. Set your Stripe credentials in your `.env` file. Specifically `STRIPE_KEY` and `STRIPE_SECRET`
+1. Set your Firebase credentials in your `.env` file. 
 
 ## 💡 If you see something to improve, don't hesitate 😊

